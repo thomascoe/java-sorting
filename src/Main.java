@@ -21,14 +21,20 @@ public class Main {
         //Selection Sort
         System.out.print("Test SelectionSort: ");
         int[] array3 = array.clone();
-        IntSort.bubbleSort(array3);
+        IntSort.selectionSort(array3);
         IntSort.printArr(array3);
         System.out.println();
         //Insertion Sort
         System.out.print("Test InsertionSort: ");
         int[] array4 = array.clone();
-        IntSort.bubbleSort(array4);
+        IntSort.insertionSort(array4);
         IntSort.printArr(array4);
+        System.out.println();
+        //Bogo Sort
+        System.out.print("Test BogoSort: ");
+        int[] array5 = array.clone();
+        IntSort.bogoSort(array5);
+        IntSort.printArr(array5);
         System.out.println();
     }
 }

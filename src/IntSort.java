@@ -1,3 +1,4 @@
+import java.util.Random;
 /**
  * A Collection of sort methods for int arrays
  *
@@ -45,7 +46,6 @@ public class IntSort {
             }
             if (minIndex != i) {
                 swap(arr, i, minIndex);
-                printArr(arr);
             }
         }
     }
@@ -68,6 +68,18 @@ public class IntSort {
     }
 
     /**
+     * Sort the array passed in using a BogoSort algorithm. Checks if the array
+     * is sorted, if not it shuffles the array and checks again.
+     *
+     * @param arr The int[] to sort
+     */
+    public static void bogoSort(int[] arr) {
+        while (!isSorted(arr)) {
+            shuffle(arr);
+        }
+    }
+
+    /**
      * Swaps the two items in the array provided that correspond to the indexes
      * provided.
      *
@@ -79,6 +91,35 @@ public class IntSort {
         int temp = arr[index1];
         arr[index1] = arr[index2];
         arr[index2] = temp;
+    }
+
+    /**
+     * Shuffles the elements in an int array
+     *
+     * @param arr The array to shuffle
+     */
+    private static void shuffle(int[] arr) {
+        Random rand = new Random();
+        for (int i = 0; i < arr.length; i++) {
+            int index1 = rand.nextInt(arr.length);
+            int index2 = rand.nextInt(arr.length);
+            swap(arr, index1, index2);
+        }
+    }
+
+    /**
+     * Checks if an int array is sorted
+     *
+     * @param arr The int[] to check
+     * @return    True if the array is sorted
+     */
+    public static boolean isSorted(int[] arr) {
+        for (int i = 0; i < arr.length-1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
